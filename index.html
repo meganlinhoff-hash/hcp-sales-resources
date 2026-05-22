@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Enablement Resources | Housecall Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --hcp-dark:   #0A2443;
+      --hcp-cyber:  #0055FF;
+      --hcp-golden: #FFB706;
+      --hcp-light:  #F4F7FB;
+      --hcp-mid:    #E2E8F2;
+      --hcp-text:   #1E293B;
+      --hcp-muted:  #64748B;
+      --hcp-white:  #FFFFFF;
+      --green-bg:   #DCFCE7;
+      --green-text: #15803D;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--hcp-light);
+      color: var(--hcp-text);
+      padding: 40px 24px 80px;
+    }
+    .page-wrapper { max-width: 1180px; margin: 0 auto; }
+
+    /* ---- PAGE HEADER ---- */
+    .page-header {
+      background: var(--hcp-dark);
+      border-radius: 12px;
+      padding: 40px 48px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--hcp-golden);
+    }
+    .page-header h1 {
+      font-size: 28px; font-weight: 800;
+      color: var(--hcp-white);
+      margin-bottom: 8px; letter-spacing: -0.3px;
+    }
+    .page-header p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      max-width: 640px; line-height: 1.6;
+    }
+    .page-header .last-updated {
+      position: absolute; top: 20px; right: 32px;
+      font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 500;
+    }
+
+    /* ---- SOCIAL PROOF HUB BANNER ---- */
+    .proof-hub {
+      background: var(--hcp-white);
+      border-radius: 12px;
+      border: 2px solid var(--hcp-golden);
+      padding: 24px 32px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .proof-hub-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .proof-hub-body h2 {
+      font-size: 16px; font-weight: 800;
+      color: var(--hcp-dark);
+      margin-bottom: 8px;
+    }
+    .proof-hub-body p {
+      font-size: 13.5px; color: var(--hcp-muted);
+      line-height: 1.6; margin-bottom: 4px;
+    }
+    .proof-hub-body p strong { color: var(--hcp-text); }
+    .proof-hub-body .contact-note {
+      margin-top: 10px;
+      font-size: 12px; color: var(--hcp-muted);
+      font-style: italic;
+    }
+
+    /* ---- SECTION HEADER ---- */
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px; margin-top: 48px;
+    }
+    .section-header h2 { font-size: 18px; font-weight: 700; color: var(--hcp-dark); }
+    .count-badge {
+      background: var(--hcp-mid); color: var(--hcp-muted);
+      font-size: 12px; font-weight: 600;
+      padding: 3px 9px; border-radius: 20px;
+    }
+    .section-divider {
+      border: none; border-top: 2px solid var(--hcp-mid); margin-bottom: 24px;
+    }
+
+    /* ---- CASE STUDY CARDS ---- */
+    .case-study-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cs-card {
+      background: var(--hcp-white);
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(10,36,67,0.08);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 220px 1fr 240px 160px;
+    }
+    .cs-card:hover { box-shadow: 0 3px 12px rgba(10,36,67,0.12); }
+
+    /* left accent bar by trade */
+    .cs-card.hvac    { border-left: 4px solid #3B82F6; }
+    .cs-card.elec    { border-left: 4px solid #F59E0B; }
+    .cs-card.special { border-left: 4px solid #8B5CF6; }
+
+    .cs-identity {
+      padding: 20px 18px;
+      border-right: 1px solid var(--hcp-mid);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cs-identity .biz-name {
+      font-size: 15px; font-weight: 800;
+      color: var(--hcp-dark);
+      margin-bottom: 6px; line-height: 1.3;
+    }
+    .cs-identity .biz-meta {
+      font-size: 12px; color: var(--hcp-muted);
+      line-height: 1.6; margin-bottom: 12px;
+    }
+    .cs-identity .biz-meta strong { color: var(--hcp-text); font-weight: 700; }
+    .cs-identity .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; }
+
+    .tag {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px; line-height: 1.4;
+      white-space: nowrap;
+    }
+    .tag-hvac     { background: #EFF6FF; color: #1D4ED8; }
+    .tag-elec     { background: #FEF9C3; color: #854D0E; }
+    .tag-spec     { background: #FAF5FF; color: #6B21A8; }
+    .tag-seg      { background: #F1F5F9; color: #475569; }
+    .tag-allseg   { background: #F1F5F9; color: #334155; }
+    .tag-franchise{ background: #FFF7ED; color: #9A3412; }
+    .tag-ai       { background: #F0F9FF; color: #0369A1; }
+    .tag-growth   { background: #ECFDF5; color: #065F46; }
+
+    .cs-summary {
+      padding: 20px 20px;
+      border-right: 1px solid var(--hcp-mid);
+    }
+    .cs-summary p {
+      font-size: 13px; color: var(--hcp-text);
+      line-height: 1.6; margin-bottom: 12px;
+    }
+    .cs-features-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      color: var(--hcp-muted); margin-bottom: 7px;
+    }
+    .cs-features { display: flex; flex-wrap: wrap; gap: 5px; }
+    .feat-pill {
+      font-size: 11px; font-weight: 600;
+      background: var(--hcp-light);
+      color: var(--hcp-dark);
+      border: 1px solid var(--hcp-mid);
+      padding: 3px 9px; border-radius: 20px;
+    }
+
+    .cs-usewhen {
+      padding: 20px 18px;
+      border-right: 1px solid var(--hcp-mid);
+    }
+    .cs-usewhen-label {
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      color: var(--hcp-muted); margin-bottom: 8px;
+    }
+    .cs-usewhen p {
+      font-size: 12.5px; color: var(--hcp-text);
+      line-height: 1.55; font-style: italic;
+    }
+
+    .cs-action {
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* ---- LINKS ---- */
+    .link-btn {
+      display: inline-block;
+      background: var(--hcp-cyber);
+      color: var(--hcp-white);
+      font-size: 12px; font-weight: 700;
+      padding: 8px 14px; border-radius: 6px;
+      text-decoration: none; white-space: nowrap;
+    }
+    .link-btn:hover { background: #0041CC; }
+    .link-placeholder {
+      font-size: 11.5px; color: var(--hcp-muted); font-style: italic;
+    }
+
+    /* ---- REPORTS TABLE ---- */
+    .resource-table {
+      width: 100%;
+      border-collapse: separate; border-spacing: 0;
+      background: var(--hcp-white);
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(10,36,67,0.08);
+    }
+    .resource-table thead tr { background: var(--hcp-dark); }
+    .resource-table thead th {
+      padding: 13px 16px;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.7px;
+      color: rgba(255,255,255,0.6); text-align: left;
+    }
+    .resource-table tbody tr {
+      border-bottom: 1px solid var(--hcp-mid);
+      transition: background 0.15s;
+    }
+    .resource-table tbody tr:last-child { border-bottom: none; }
+    .resource-table tbody tr:hover { background: #F8FAFD; }
+    .resource-table td { padding: 16px; font-size: 13.5px; vertical-align: top; line-height: 1.5; }
+
+    .name-cell strong {
+      display: block; font-size: 14px; font-weight: 700;
+      color: var(--hcp-dark); margin-bottom: 4px;
+    }
+    .name-cell .meta { font-size: 11.5px; color: var(--hcp-muted); font-weight: 500; }
+    .report-label {
+      font-size: 11px; font-weight: 600; color: var(--hcp-muted);
+      text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px;
+    }
+    .new-badge {
+      display: inline-block;
+      background: var(--green-bg); color: var(--green-text);
+      font-size: 10px; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px;
+      margin-bottom: 5px; letter-spacing: 0.3px;
+    }
+    .snap-stat { font-size: 12px; color: var(--hcp-muted); margin-bottom: 3px; }
+    .snap-stat strong { color: var(--hcp-text); font-weight: 600; }
+    .snap-stat .growth { color: var(--green-text); font-weight: 700; }
+    .takeaway-list { list-style: none; padding: 0; }
+    .takeaway-list li {
+      font-size: 12.5px; color: var(--hcp-text);
+      padding-left: 14px; position: relative;
+      margin-bottom: 5px; line-height: 1.45;
+    }
+    .takeaway-list li::before {
+      content: '›'; position: absolute; left: 0;
+      color: var(--hcp-golden); font-weight: 700;
+    }
+    .seg-cell { padding-top: 17px; }
+
+    /* ---- MEDIA COVERAGE PLACEHOLDER ---- */
+    .media-placeholder {
+      background: var(--hcp-white);
+      border-radius: 12px;
+      border: 2px dashed var(--hcp-mid);
+      padding: 40px;
+      text-align: center;
+    }
+    .media-placeholder p {
+      font-size: 14px; color: var(--hcp-muted);
+    }
+    .media-placeholder strong { color: var(--hcp-text); }
+
+    /* ---- QUICK GUIDE ---- */
+    .quick-guide {
+      margin-top: 48px;
+      background: var(--hcp-white); border-radius: 12px;
+      padding: 28px 32px;
+      box-shadow: 0 1px 4px rgba(10,36,67,0.08);
+      border-left: 4px solid var(--hcp-golden);
+    }
+    .quick-guide h3 { font-size: 15px; font-weight: 700; color: var(--hcp-dark); margin-bottom: 18px; }
+    .quick-guide-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .guide-col-label {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--hcp-muted); margin-bottom: 6px;
+    }
+    .guide-col-body { font-size: 13px; color: var(--hcp-text); line-height: 1.55; }
+
+    /* ---- MEDIA COVERAGE ---- */
+    .media-section { display: flex; flex-direction: column; gap: 32px; }
+
+    .media-group-label {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.7px;
+      color: var(--hcp-muted);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--hcp-mid);
+    }
+
+    /* Flagship banner */
+    .flagship-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .flagship-card {
+      background: var(--hcp-dark);
+      border-radius: 10px;
+      padding: 20px 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .flagship-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--hcp-golden);
+    }
+    .flagship-card .outlet {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.7px;
+      color: var(--hcp-golden);
+      margin-bottom: 7px;
+    }
+    .flagship-card .headline {
+      font-size: 14px; font-weight: 700;
+      color: var(--hcp-white);
+      line-height: 1.4; margin-bottom: 8px;
+    }
+    .flagship-card .why {
+      font-size: 12px; color: rgba(255,255,255,0.6);
+      line-height: 1.5; margin-bottom: 12px;
+    }
+    .flagship-card .meta {
+      font-size: 11px; color: rgba(255,255,255,0.35);
+    }
+    .flagship-card .read-link {
+      display: inline-block;
+      font-size: 11.5px; font-weight: 700;
+      color: var(--hcp-golden);
+      text-decoration: none;
+      margin-top: 12px;
+    }
+    .flagship-card .read-link:hover { text-decoration: underline; }
+    .ai-flag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 7px; border-radius:999px; vertical-align:middle; }
+    .ai-flag-light { background:#E0F2FE; color:#0369A1; }
+    .ai-flag-dark  { background:rgba(3,105,161,0.85); color:#E0F2FE; }
+
+    /* Coverage table */
+    .coverage-table {
+      width: 100%;
+      border-collapse: separate; border-spacing: 0;
+      background: var(--hcp-white);
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(10,36,67,0.07);
+    }
+    .coverage-table thead tr { background: #F1F5F9; }
+    .coverage-table thead th {
+      padding: 10px 14px;
+      font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      color: var(--hcp-muted); text-align: left;
+    }
+    .coverage-table tbody tr { border-bottom: 1px solid var(--hcp-mid); }
+    .coverage-table tbody tr:last-child { border-bottom: none; }
+    .coverage-table tbody tr:hover { background: #F8FAFD; }
+    .coverage-table td {
+      padding: 12px 14px; font-size: 13px;
+      vertical-align: middle; line-height: 1.4;
+    }
+    .outlet-name {
+      font-weight: 700; color: var(--hcp-dark);
+      font-size: 13px;
+    }
+    .outlet-reach {
+      font-size: 11px; color: var(--hcp-muted);
+      margin-top: 2px;
+    }
+    .coverage-title { color: var(--hcp-text); font-size: 13px; }
+    .coverage-title a {
+      color: var(--hcp-cyber); text-decoration: none; font-weight: 600;
+    }
+    .coverage-title a:hover { text-decoration: underline; }
+    .coverage-quote {
+      font-size: 11.5px; color: var(--hcp-muted);
+      font-style: italic; margin-top: 4px; line-height: 1.4;
+    }
+    .cov-date { font-size: 12px; color: var(--hcp-muted); white-space: nowrap; }
+    .cov-tag {
+      display: inline-block; font-size: 10.5px; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px;
+      background: var(--hcp-light); color: var(--hcp-dark);
+      white-space: nowrap;
+    }
+    .cov-tag.ai   { background: #F0F9FF; color: #0369A1; }
+    .cov-tag.pro  { background: var(--green-bg); color: var(--green-text); }
+    .cov-tag.hvac { background: #EFF6FF; color: #1D4ED8; }
+    .cov-tag.plumb{ background: #F0FDF4; color: #166534; }
+    .cov-tag.fran { background: #FFF7ED; color: #9A3412; }
+    .cov-tag.event{ background: #FAF5FF; color: #6B21A8; }
+
+    /* Podcast cards */
+    .podcast-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .pod-card {
+      background: var(--hcp-white);
+      border-radius: 10px;
+      border: 1px solid var(--hcp-mid);
+      padding: 16px 18px;
+      box-shadow: 0 1px 3px rgba(10,36,67,0.06);
+    }
+    .pod-card:hover { box-shadow: 0 3px 10px rgba(10,36,67,0.1); }
+    .pod-show {
+      font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--hcp-muted); margin-bottom: 6px;
+    }
+    .pod-title {
+      font-size: 13px; font-weight: 700;
+      color: var(--hcp-dark); line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .pod-meta {
+      font-size: 11.5px; color: var(--hcp-muted);
+      margin-bottom: 10px;
+    }
+    .pod-link {
+      font-size: 11.5px; font-weight: 700;
+      color: var(--hcp-cyber); text-decoration: none;
+    }
+    .pod-link:hover { text-decoration: underline; }
+
+    /* ---- FOOTER ---- */
+    .page-footer {
+      margin-top: 48px; padding-top: 24px;
+      border-top: 1px solid var(--hcp-mid);
+      font-size: 12px; color: var(--hcp-muted); text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <span class="last-updated">Updated May 2026</span>
+    <h1>Sales Enablement Resources</h1>
+    <p>Case studies, reports, and market data for the sales team. Use these to back up claims, handle objections, and close with proof.</p>
+  </div>
+
+  <!-- SOCIAL PROOF HUB BANNER -->
+  <div class="proof-hub">
+    <div class="proof-hub-icon">⭐</div>
+    <div class="proof-hub-body">
+      <h2>The Social Proof Hub &nbsp;—&nbsp; Your Go-To for All Approved Claims &amp; Testimonials</h2>
+      <p><strong>Marketing claims</strong> — e.g., 35% average revenue growth, 8 hours saved per week</p>
+      <p><strong>Pro testimonials and headshots</strong> — select from hundreds by industry, business size, or topic</p>
+      <p><strong>Pro-to-Pro insights</strong> — quotes on running a trades business and using HCP from experienced Pros</p>
+      <p class="contact-note">Want to see more in the hub? Contact <strong>@Emma Berry</strong></p>
+      <a href="https://docs.google.com/spreadsheets/d/1WTD_0DbWa3aYx7qdaQJLkPw0FZupgYiqkCGtfFKcsug/edit?gid=2097384926#gid=2097384926" target="_blank" style="display:inline-block;margin-top:14px;background:#0A2443;color:#FFB706;font-size:12px;font-weight:700;padding:8px 16px;border-radius:6px;text-decoration:none;letter-spacing:0.3px;">Open Social Proof Hub →</a>
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       CASE STUDIES
+  ====================================================== -->
+  <div class="section-header">
+    <h2>Pro Case Studies</h2>
+    <span class="count-badge">6 stories</span>
+  </div>
+  <hr class="section-divider" />
+
+  <div class="case-study-grid">
+
+    <!-- JAXPOWERPRO -->
+    <div class="cs-card elec">
+      <div class="cs-identity">
+        <div>
+          <div class="biz-name">JaxPowerPro</div>
+          <div class="biz-meta">
+            Electrical &nbsp;·&nbsp; Jacksonville, FL<br/>
+            <strong>$2M+</strong> revenue<br/>
+            Small/Mid segment (5 trucks)
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag tag-elec">Electrical</span>
+          <span class="tag tag-seg">5 trucks</span>
+        </div>
+      </div>
+      <div class="cs-summary">
+        <p>$700K year one. $1.25M year two. $2M+ on pace — built by a first-time owner who needed a system that kept up without adding headcount. Pipeline, HCP Assist, and the mobile app became the office manager he couldn't yet hire.</p>
+        <div class="cs-features-label">Key Features</div>
+        <div class="cs-features">
+          <span class="feat-pill">Pipeline</span>
+          <span class="feat-pill">HCP Assist</span>
+          <span class="feat-pill">Mobile app</span>
+          <span class="feat-pill">GPS tracking</span>
+          <span class="feat-pill">Real-time customer messaging</span>
+        </div>
+      </div>
+      <div class="cs-usewhen">
+        <div class="cs-usewhen-label">Use It When</div>
+        <p>Prospect is growing fast, trying to delay an office hire, or evaluated other CRMs and found them too complex to run lean.</p>
+      </div>
+      <div class="cs-action">
+        <a class="link-btn" href="https://content.housecallpro.com/788397d2-5233-4fd3-b22d-e7534d8e2587" target="_blank">View Story</a>
+      </div>
+    </div>
+
+    <!-- POWERMEANS ELECTRIC -->
+    <div class="cs-card elec">
+      <div class="cs-identity">
+        <div>
+          <div class="biz-name">PowerMeans Electric</div>
+          <div class="biz-meta">
+            Electrical &nbsp;·&nbsp; Austin, TX<br/>
+            <strong>~$3M</strong> revenue<br/>
+            1C (6–10 techs)
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag tag-elec">Electrical</span>
+          <span class="tag tag-seg">1C</span>
+        </div>
+      </div>
+      <div class="cs-summary">
+        <p>Grew from $1.5M to $3M in three years after abandoning a competing FSM platform six months in. Has referred 10+ electricians and calls himself an HCP ambassador.</p>
+        <div class="cs-features-label">Key Features</div>
+        <div class="cs-features">
+          <span class="feat-pill">CRM</span>
+          <span class="feat-pill">Price Book</span>
+          <span class="feat-pill">On-site estimates</span>
+          <span class="feat-pill">Invoicing</span>
+        </div>
+      </div>
+      <div class="cs-usewhen">
+        <div class="cs-usewhen-label">Use It When</div>
+        <p>Prospect tried and left another FSM, is in electrical, or is skeptical about ease of use and implementation cost.</p>
+      </div>
+      <div class="cs-action">
+        <a class="link-btn" href="https://content.housecallpro.com/f3036503-1370-473a-ad30-54bf98fdfc3f" target="_blank">View Story</a>
+      </div>
+    </div>
+
+    <!-- CHAMPION HEATING & AIR -->
+    <div class="cs-card hvac">
+      <div class="cs-identity">
+        <div>
+          <div class="biz-name">Champion Heating &amp; Air</div>
+          <div class="biz-meta">
+            HVAC &nbsp;·&nbsp; Dacula, GA<br/>
+            <strong>$2M+</strong> revenue<br/>
+            Small/Mid segment (5 techs)
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag tag-hvac">HVAC</span>
+          <span class="tag tag-seg">ServiceTitan switcher</span>
+        </div>
+      </div>
+      <div class="cs-summary">
+        <p>Launched in 2020 with one truck. Left ServiceTitan — "paying top dollar for a package that didn't quite fit" — and hasn't looked back. Now at $2M+, a second location on the way, and an owner who says running the business is "far less stressful."</p>
+        <div class="cs-features-label">Key Features</div>
+        <div class="cs-features">
+          <span class="feat-pill">Automatic follow-ups</span>
+          <span class="feat-pill">Flat-rate pricing</span>
+          <span class="feat-pill">QuickBooks integration</span>
+          <span class="feat-pill">GPS tracking</span>
+          <span class="feat-pill">On-site estimates &amp; invoicing</span>
+        </div>
+      </div>
+      <div class="cs-usewhen">
+        <div class="cs-usewhen-label">Use It When</div>
+        <p>Prospect is evaluating or coming off ServiceTitan, or the owner quality-of-life angle is the right door in.</p>
+      </div>
+      <div class="cs-action">
+        <a class="link-btn" href="https://content.housecallpro.com/46d2d7fa-3b86-44b7-856b-2b5f1c6d501d" target="_blank">View Story</a>
+      </div>
+    </div>
+
+    <!-- SONLIGHT SERVICES -->
+    <div class="cs-card special">
+      <div class="cs-identity">
+        <div>
+          <div class="biz-name">Sonlight Services LLC</div>
+          <div class="biz-meta">
+            Specialty: Sewer + Septic<br/>
+            Lancaster County, PA<br/>
+            <strong>$1.8M+</strong> annual profit<br/>
+            2-5D
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag tag-spec">Specialty</span>
+          <span class="tag tag-spec">Septic</span>
+          <span class="tag tag-seg">2-5D</span>
+        </div>
+      </div>
+      <div class="cs-summary">
+        <p>Bought a three-truck operation running on paper slips. Four years later: five trucks, four service lines, 800+ Google reviews (up from 50), and $1.8M+ in annual profit.</p>
+        <div class="cs-features-label">Key Features</div>
+        <div class="cs-features">
+          <span class="feat-pill">Automated follow-up</span>
+          <span class="feat-pill">AI call answering</span>
+          <span class="feat-pill">Automated dispatch</span>
+          <span class="feat-pill">Online booking</span>
+        </div>
+      </div>
+      <div class="cs-usewhen">
+        <div class="cs-usewhen-label">Use It When</div>
+        <p>Prospect is on pen and paper, in a specialty trade, or the reputation management angle is relevant. Clearest before/after automation story in the set.</p>
+      </div>
+      <div class="cs-action">
+        <a class="link-btn" href="https://content.housecallpro.com/283f2db8-8f04-45b8-ac4d-6e401c0cca1e" target="_blank">View Story</a>
+      </div>
+    </div>
+
+    <!-- R&J BROTHERS ELECTRIC -->
+    <div class="cs-card elec">
+      <div class="cs-identity">
+        <div>
+          <div class="biz-name">R&amp;J Brothers Electric</div>
+          <div class="biz-meta">
+            Electrical &nbsp;·&nbsp; New Milford, NJ<br/>
+            <strong>$1.2M+</strong> revenue<br/>
+            Small segment (4 trucks)
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag tag-elec">Electrical</span>
+          <span class="tag tag-seg">4 trucks</span>
+        </div>
+      </div>
+      <div class="cs-summary">
+        <p>Built while working overnight shifts at NJ Transit. Went all-in in 2021 and grew from $500K to $1.2M+. The story is operational professionalism at this stage: polished quotes, photo documentation, no missed after-hours calls, reviews on autopilot.</p>
+        <div class="cs-features-label">Key Features</div>
+        <div class="cs-features">
+          <span class="feat-pill">Pipeline</span>
+          <span class="feat-pill">HCP Cam</span>
+          <span class="feat-pill">HCP Assist</span>
+          <span class="feat-pill">Automated review requests</span>
+          <span class="feat-pill">Business Coaching</span>
+        </div>
+      </div>
+      <div class="cs-usewhen">
+        <div class="cs-usewhen-label">Use It When</div>
+        <p>Prospect is in the $500K–$1.5M range or asks what they get beyond the software. Best Business Coaching proof point in the set.</p>
+      </div>
+      <div class="cs-action">
+        <a class="link-btn" href="https://content.housecallpro.com/3c6eea08-1f79-4b12-9e7d-f6e1a5d7086a" target="_blank">View Story</a>
+      </div>
+    </div>
+
+    <!-- FRONTIER AIR CONDITIONING -->
+    <div class="cs-card hvac">
+      <div class="cs-identity">
+        <div>
+          <div class="biz-name">Frontier Air Conditioning</div>
+          <div class="biz-meta">
+            HVAC &nbsp;·&nbsp; Mission, TX<br/>
+            <strong class="growth" style="color:#15803D">$800K → $6M</strong> forecast<br/>
+            Mid/Large (1D, 11+)
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag tag-hvac">HVAC</span>
+          <span class="tag tag-seg">1D</span>
+        </div>
+      </div>
+      <div class="cs-summary">
+        <p>Stuck at $800K for years despite strong demand. Jay Villegas took over operations, identified a crashing CRM as the bottleneck, and switched mid-summer. One automated follow-up email recovered a $39K install. Revenue forecast is now $6M.</p>
+        <div class="cs-features-label">Key Features</div>
+        <div class="cs-features">
+          <span class="feat-pill">Price Book</span>
+          <span class="feat-pill">Pipeline</span>
+          <span class="feat-pill">SMS/email marketing</span>
+          <span class="feat-pill">AI phone answering</span>
+          <span class="feat-pill">Automated follow-ups</span>
+        </div>
+      </div>
+      <div class="cs-usewhen">
+        <div class="cs-usewhen-label">Use It When</div>
+        <p>Prospect is at a revenue plateau, coming off an unreliable FSM, or in a family-business-to-professional-operation transition. Most dramatic HVAC growth story in the set.</p>
+      </div>
+      <div class="cs-action">
+        <a class="link-btn" href="https://content.housecallpro.com/e5b69182-741d-4f30-814b-c550bc3b421d" target="_blank">View Story</a>
+      </div>
+    </div>
+
+  </div><!-- end case-study-grid -->
+
+
+  <!-- =====================================================
+       REPORTS & WHITE PAPERS
+  ====================================================== -->
+  <div class="section-header" style="margin-top: 56px;">
+    <h2>Reports &amp; White Papers</h2>
+    <span class="count-badge">7 reports</span>
+  </div>
+  <hr class="section-divider" />
+
+  <table class="resource-table">
+    <thead>
+      <tr>
+        <th style="width:24%">Report</th>
+        <th style="width:10%">Type</th>
+        <th style="width:27%">Key Data Points</th>
+        <th style="width:27%">Sales Takeaway</th>
+        <th style="width:12%">Link</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- State of Home Service Spending 2026 -->
+      <tr>
+        <td class="name-cell">
+          <span class="new-badge">NEW</span>
+          <strong>State of Home Service Spending 2026</strong>
+          <div class="report-label">Homeowner Survey · May 2026</div>
+        </td>
+        <td class="seg-cell">
+          <span class="tag tag-allseg">All Trades</span><br/>
+          <span class="tag tag-allseg" style="margin-top:4px">Homeowner</span>
+        </td>
+        <td>
+          <div class="snap-stat"><strong>96%</strong> of homeowners plan to spend on home projects in 2026</div>
+          <div class="snap-stat"><strong>79%</strong> plan to repair or replace a system</div>
+          <div class="snap-stat"><strong>72%</strong> would pay more for emergency resolution within 24 hrs</div>
+          <div class="snap-stat"><strong>68%</strong> shop around when price exceeds expectations</div>
+          <div class="snap-stat"><strong>62%</strong> more likely to book when financing is offered</div>
+          <div class="snap-stat"><strong>41%</strong> have delayed a repair that cost more later</div>
+          <div class="snap-stat">n=1,100+ U.S. homeowners, Feb 2026</div>
+        </td>
+        <td>
+          <ul class="takeaway-list">
+            <li>"72% would pay more for emergency response within 24 hrs" — makes the speed-to-answer pitch concrete</li>
+            <li>68% shop around on price — opens the follow-up automation conversation</li>
+            <li>62% more likely to book with financing — directly supports Powered Payments</li>
+            <li>41% regret delaying repairs — education angle for service agreements</li>
+          </ul>
+        </td>
+        <td><a class="link-btn" href="https://www.housecallpro.com/wp-content/uploads/2026/05/HousecallProStateOfHomeSpendingReport05_2026.pdf" target="_blank">View Report</a></td>
+      </tr>
+
+
+      <!-- HVAC Repair Economics -->
+      <tr>
+        <td class="name-cell">
+          <span class="new-badge">NEW</span>
+          <strong>Trades Pulse: HVAC Repair Economics</strong>
+          <div class="report-label">Industry Research · Q1 2026</div>
+        </td>
+        <td class="seg-cell">
+          <span class="tag tag-hvac">HVAC</span>
+        </td>
+        <td>
+          <div class="snap-stat">Repair revenue share: <strong>21.6% → 31.3%</strong> from 2021 to 2025</div>
+          <div class="snap-stat">Repairs per org/year: <strong>+64.7%</strong> from 2022 to 2025</div>
+          <div class="snap-stat">Average repair job value: <strong>$818 → $1,205</strong> (+47% nominal)</div>
+          <div class="snap-stat">Repair costs: <strong>–26%</strong> from 2023 peak — margins improving</div>
+          <div class="snap-stat">Strongest shift in <strong>2–5 tech shops</strong> — repair revenue nearly doubled</div>
+        </td>
+        <td>
+          <ul class="takeaway-list">
+            <li>HVAC-only asset — don't lead with it, use it after the repair conversation is open</li>
+            <li>"Repair volume is up 64%, the average job pays 47% more, and your costs are down — are your workflows built for this?" opens scheduling and quoting features</li>
+            <li>2–5 tech shop data is the most relevant angle for 1C/1D HVAC prospects</li>
+          </ul>
+        </td>
+        <td><a class="link-btn" href="https://www.housecallpro.com/wp-content/uploads/2026/03/032026-HCP-Trades-Quarterly-Pulse_HVAC-Repair-Economics.pdf" target="_blank">View Report</a></td>
+      </tr>
+
+
+      <!-- IFA White Paper -->
+      <tr>
+        <td class="name-cell">
+          <strong>Scaling Brand Standards: FSM Strategies for Franchise Growth</strong>
+          <div class="report-label">IFA White Paper · July 2025</div>
+        </td>
+        <td class="seg-cell">
+          <span class="tag tag-franchise">Franchise</span>
+        </td>
+        <td>
+          <div class="snap-stat">ResiBrands: <strong>~700 territories, 5 trade brands</strong> — ran from one HCP command center</div>
+          <div class="snap-stat">Chose HCP after reviewing <strong>40+ platforms</strong> — only one that worked for both field techs and corp HQ</div>
+          <div class="snap-stat">"The only CRM my actual workers have never complained about." — ResiBrands CGO</div>
+          <div class="snap-stat">Location cloning, locked price books, and real-time dashboards across every territory</div>
+        </td>
+        <td>
+          <ul class="takeaway-list">
+            <li>Pull this when a prospect runs multiple locations, is PE-backed, or mentions franchising</li>
+            <li>ResiBrands reviewed 40+ platforms — HCP was the only one field techs AND corporate both accepted</li>
+            <li>Use the cloning + permissions story: lock brand standards at the top, give local teams flexibility to run the day</li>
+          </ul>
+        </td>
+        <td><a class="link-btn" href="https://www.franchise.org/field-management-strategies-for-growing-home-services-franchises/" target="_blank">View Report</a></td>
+      </tr>
+
+      <!-- Growth Playbook Q4 2025 -->
+      <tr>
+        <td class="name-cell">
+          <strong>The Growth Playbook: 5 Proven Strategies from Pros Who've Scaled Past $2M</strong>
+          <div class="report-label">Original Research · Q4 2025</div>
+        </td>
+        <td class="seg-cell">
+          <span class="tag tag-growth">Growth</span><br/>
+          <span class="tag tag-allseg" style="margin-top:4px">Midsize</span>
+        </td>
+        <td>
+          <div class="snap-stat">5 strategies from Pros who've crossed the $2M threshold</div>
+          <div class="snap-stat">Operational, marketing, and hiring patterns from high-growth shops</div>
+          <div class="snap-stat">Focus: 1C and 1D segments scaling past key revenue milestones</div>
+        </td>
+        <td>
+          <ul class="takeaway-list">
+            <li>Strong asset for 1C/1D prospects with stated growth goals</li>
+            <li>Use when a Pro says "I want to grow but don't know where to start"</li>
+            <li>Back up with Frontier Air Conditioning case study ($800K → $6M arc)</li>
+          </ul>
+        </td>
+        <td><a class="link-btn" href="https://www.housecallpro.com/wp-content/uploads/2025/09/090325-Housecall-Pro-Midsize-Whitepaper__The-growth-playbook_-5-proven-strategies-from-home-service-Pros-whove-scaled-past-2M_compressed.pdf" target="_blank">View Report</a></td>
+      </tr>
+
+      <!-- New Home Service Standard Q4 2025 -->
+      <tr>
+        <td class="name-cell">
+          <strong>The New Home Service Standard: How Systems Win the Customer</strong>
+          <div class="report-label">Homeowner Survey · Q4 2025</div>
+        </td>
+        <td class="seg-cell">
+          <span class="tag tag-allseg">All Trades</span><br/>
+          <span class="tag tag-allseg" style="margin-top:4px">Homeowner</span>
+        </td>
+        <td>
+          <div class="snap-stat">What drives homeowner hiring decisions</div>
+          <div class="snap-stat">Speed, reviews, communication ranked vs. price</div>
+          <div class="snap-stat">"Systems, not just skills" — consistency as competitive advantage</div>
+        </td>
+        <td>
+          <ul class="takeaway-list">
+            <li>Shifts the conversation from "I'm good at my trade" to "the experience is the brand"</li>
+            <li>Effective with owner-operators who resist systems ("I handle it myself")</li>
+            <li>Pair with customer communication and review features in the demo</li>
+          </ul>
+        </td>
+        <td><a class="link-btn" href="https://www.housecallpro.com/wp-content/uploads/2025/12/120425-Customer-Service-Report.pdf" target="_blank">View Report</a></td>
+      </tr>
+
+      <!-- 2025 AI Industry Report Q3 2025 -->
+      <tr>
+        <td class="name-cell">
+          <strong>2025 AI Industry Report: The AI-Assisted Skilled Trades Pro</strong>
+          <div class="report-label">Industry Research · Q3 2025</div>
+        </td>
+        <td class="seg-cell">
+          <span class="tag tag-ai">AI / Tech</span>
+        </td>
+        <td>
+          <div class="snap-stat">AI use rates across the trades</div>
+          <div class="snap-stat">AI-driven results: time saved, revenue impact</div>
+          <div class="snap-stat">Tools Pros are actually using in the field</div>
+        </td>
+        <td>
+          <ul class="takeaway-list">
+            <li>Use with tech-forward Pros curious about AI to validate HCP's product direction</li>
+            <li>Counter to "AI isn't for the trades" skepticism</li>
+            <li>Positions HCP as the platform bringing AI tools to the field, not just back office</li>
+          </ul>
+        </td>
+        <td><a class="link-btn" href="https://www.housecallpro.com/wp-content/uploads/2025/07/071525-AI-Industry-Report-final.pdf" target="_blank">View Report</a></td>
+      </tr>
+
+      <!-- 2024 Trends Report Q4 2024 -->
+      <tr>
+        <td class="name-cell">
+          <strong>2024 Trends Report: 4 Trends Shaping Home Services</strong>
+          <div class="report-label">Industry Research · Q4 2024</div>
+        </td>
+        <td class="seg-cell">
+          <span class="tag tag-allseg">All Trades</span><br/>
+          <span class="tag tag-ai" style="margin-top:4px">AI</span>
+        </td>
+        <td>
+          <div class="snap-stat">Confidence in 2025 growth</div>
+          <div class="snap-stat">Labor shortage; trades vs. college ROI</div>
+          <div class="snap-stat">Trade school and apprenticeship path forward</div>
+          <div class="snap-stat">Early AI adoption and time savings for Pros</div>
+        </td>
+        <td>
+          <ul class="takeaway-list">
+            <li>Good for broader industry context in early-stage conversations</li>
+            <li>Labor shortage framing resonates with Pros struggling to hire — sets up the efficiency pitch</li>
+            <li>Trades vs. college angle works for recruiting-minded owners building crews</li>
+          </ul>
+        </td>
+        <td><a class="link-btn" href="https://www.housecallpro.com/resources/field-home-service-industry-trends/" target="_blank">View Report</a></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+  <!-- =====================================================
+       TRADES MEDIA COVERAGE
+  ====================================================== -->
+  <div class="section-header" style="margin-top: 56px;">
+    <h2>Trades Media Coverage</h2>
+    <span class="count-badge">21 placements</span>
+  </div>
+  <hr class="section-divider" />
+
+  <div class="media-section">
+
+    <!-- FLAGSHIP -->
+    <div>
+      <div class="media-group-label">Flagship Coverage</div>
+      <div class="flagship-grid" style="grid-template-columns: repeat(2, 1fr);">
+
+        <div class="flagship-card">
+          <div class="outlet">CNN Business &nbsp;<span class="ai-flag ai-flag-dark">AI</span></div>
+          <div class="headline">"Your plumber has a new favorite tool: ChatGPT"</div>
+          <div class="why">Direct mention of HCP's AI product with link to the 2025 AI Adoption report. Tier 1 business media — use to establish credibility with any prospect, especially tech-skeptical or PE-backed operators.</div>
+          <div class="meta">Oct 10, 2025 &nbsp;·&nbsp; CNN.com</div>
+          <a class="read-link" href="https://edition.cnn.com/2025/10/10/tech/ai-chatgpt-blue-collar-jobs" target="_blank">Read on CNN →</a>
+        </div>
+
+        <div class="flagship-card">
+          <div class="outlet">Contracting Business</div>
+          <div class="headline">October 2025 Issue — 11 HCP Mentions, 2 Dedicated Features</div>
+          <div class="why">The strongest single-issue trade press moment in the library. The #1 HVAC trade publication dedicated an entire issue to themes HCP owns — AI, field tech, and operational efficiency — with HCP cited 11 times including 2 full feature articles. Pull the PDF for any HVAC prospect who needs third-party validation beyond a case study.</div>
+          <div class="meta">October 2025 &nbsp;·&nbsp; ContractingBusiness.com</div>
+          <a class="read-link" href="https://drive.google.com/file/d/1S-is-2xatmUUAN00H6CBbV4KtpqjhhJV/view" target="_blank">Read Full Issue →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EDITORIAL TRADE FEATURES — newest first -->
+    <div>
+      <div class="media-group-label">Editorial Trade Features &amp; Pro Stories — Newest First</div>
+      <table class="coverage-table">
+        <thead>
+          <tr>
+            <th style="width:18%">Publication</th>
+            <th style="width:46%">Article / Story</th>
+            <th style="width:10%">Angle</th>
+            <th style="width:10%">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <div class="outlet-name">Homepros</div>
+              <div class="outlet-reach">Trade + newsletter</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://homepros.news/homeowners-selective-about-home-service-spending-amid-budget-pressures-survey/" target="_blank">Homeowners 'selective' about home service spending amid budget pressures: Survey</a></div>
+              <div class="coverage-quote">Independent editorial coverage of the spending report — ran in the Homepros newsletter. Homeowner perspective from a credible third-party outlet.</div>
+            </td>
+            <td><span class="cov-tag plumb">Spending</span></td>
+            <td class="cov-date">May 15, 2026</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">Contracting Business</div>
+              <div class="outlet-reach">HVAC trade</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://www.contractingbusiness.com/industry-news/news/55377868/aging-homes-drive-hvac-and-repair-spending-in-2026-housecall-pro-survey-finds" target="_blank">Aging Homes Drive HVAC and Repair Spending in 2026, Housecall Pro Survey Finds</a></div>
+              <div class="coverage-quote">PR-pitched editorial on State of Home Spending — HVAC-specific framing. Use alongside the report to validate the repair opportunity with HVAC prospects.</div>
+            </td>
+            <td><span class="cov-tag hvac">HVAC</span></td>
+            <td class="cov-date">May 14, 2026</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">ACprosite</div>
+              <div class="outlet-reach">HVAC/Plumbing trade</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://acprosite.com/72-of-homeowners-plan-to-stay-put-as-aging-homes-drive-repair-focused-spending-housecall-pro-report-finds/" target="_blank">72% of Homeowners Plan to Stay Put as Aging Homes Drive Repair-Focused Spending</a></div>
+              <div class="coverage-quote">ACprosite editorial coverage of the State of Home Spending report. Additional trade press voice validating the report findings — useful when a prospect needs more than one source saying the same thing.</div>
+            </td>
+            <td><span class="cov-tag hvac">HVAC</span></td>
+            <td class="cov-date">May 13, 2026</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">ACHR News</div>
+              <div class="outlet-reach">HVAC trade</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://www.achrnews.com/articles/166048-5-reasons-why-high-hvac-equipment-prices-are-here-to-stay" target="_blank">5 Reasons Why High HVAC Equipment Prices Are Here to Stay</a></div>
+              <div class="coverage-quote">Independent editorial citing HCP's HVAC Repair Economics report. Validates repair-vs-replace pricing trends from a trusted HVAC trade voice — not HCP saying it, ACHR saying it.</div>
+            </td>
+            <td><span class="cov-tag hvac">HVAC</span></td>
+            <td class="cov-date">2026</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">Forbes</div>
+              <div class="outlet-reach">Agency Council · contributed</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://www.forbes.com/councils/forbesagencycouncil/2026/02/02/6-ways-home-service-pros-can-use-ai-tools-to-attract-more-customers/" target="_blank">6 Ways Home Service Pros Can Use AI Tools to Attract More Customers</a></div>
+              <div class="coverage-quote">Roland-bylined Forbes Agency Council piece on AI adoption for home service pros. Contributed placement — note that for internal context — but the Forbes brand name carries weight in prospect conversations, especially with PE-backed or franchise operators.</div>
+            </td>
+            <td><span class="cov-tag ai">AI</span></td>
+            <td class="cov-date">Feb 2, 2026</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">Pumper Magazine</div>
+              <div class="outlet-reach">Septic/Specialty</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://www.pumper.com/online_exclusives/2026/01/routing-efficiency-tool-keeps-drivers-on-track-and-customers-happy" target="_blank">Routing Efficiency Tool Keeps Drivers on Track and Customers Happy</a></div>
+              <div class="coverage-quote">2B Environmental Pro story — HCP routing driving field efficiency and profit in septic operations. Pairs with Sonlight case study for specialty trade prospects.</div>
+            </td>
+            <td><span class="cov-tag pro">Pro Story</span></td>
+            <td class="cov-date">Jan 13, 2026</td>
+          </tr>
+
+
+          <tr>
+            <td>
+              <div class="outlet-name">Contracting Business</div>
+              <div class="outlet-reach">HVAC trade</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://www.contractingbusiness.com/technology/article/55315066/mobile-tech-aids-hvac-contractor-in-texas-flood-response" target="_blank">Mobile Tech Aids HVAC Contractor in Texas Flood Response</a></div>
+              <div class="coverage-quote">To the T Plumbing used HCP's mobile app to maintain operations during catastrophic Central Texas flooding in July 2025. Dramatic real-world proof of platform reliability under pressure — one of 11 HCP mentions in the October Contracting Business issue.</div>
+            </td>
+            <td><span class="cov-tag pro">Pro Story</span></td>
+            <td class="cov-date">Oct 14, 2025</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">Contracting Business</div>
+              <div class="outlet-reach">HVAC trade</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://www.contractingbusiness.com/technology/article/55317166/smarter-faster-stronger-how-artificial-intelligence-is-changing-the-game-for-contractors" target="_blank">Smarter, Faster, Stronger: How Artificial Intelligence is Changing the Game for Contractors</a></div>
+              <div class="coverage-quote">Contracting Business editorial on AI adoption across the trades — published in the same October 2025 issue that included 11 total HCP mentions. Strong companion to the Good Guy Plumbing AI story and the CNN flagship piece.</div>
+            </td>
+            <td><span class="cov-tag ai">AI</span></td>
+            <td class="cov-date">Oct 2025</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">Cleaner Magazine</div>
+              <div class="outlet-reach">Specialty/Septic</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://www.cleaner.com/editorial/2025/10/company-moves-past-clumsy-paper-methods-and-deploys-modern-software-soluion-to-improve-operations" target="_blank">Company Moves Past Clumsy Paper Methods and Deploys Modern Software</a></div>
+              <div class="coverage-quote">Sonlight Services editorial feature — paper slips to $1.8M+ profit. Trade press independently telling the same story as the case study. Use to reinforce the before/after with specialty trade prospects.</div>
+            </td>
+            <td><span class="cov-tag pro">Pro Story</span></td>
+            <td class="cov-date">Oct 2025</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">Contractor Magazine</div>
+              <div class="outlet-reach">Plumbing/mechanical trade</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://www.contractormag.com/technology/article/55316255/innovative-plumbing-solutions-how-good-guy-plumbing-uses-ai-to-enhance-customer-care" target="_blank">Innovative Plumbing Solutions: How Good Guy Plumbing Uses AI to Enhance Customer Care</a></div>
+              <div class="coverage-quote">"Our AI voice agent now answers the phone 24/7, triages the issue, and books the job directly onto our calendar. That stopped the bleed of missed calls that used to roll to voicemail after 5:00 p.m." — Rob Castelao, Good Guy Plumbing</div>
+            </td>
+            <td><span class="cov-tag ai">AI / Pro</span></td>
+            <td class="cov-date">Sep 12, 2025</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">Franchising Magazine USA</div>
+              <div class="outlet-reach">Roland byline</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://franchisingmagazineusa.com/expert_advice/tech-the-secret-weapon-for-home-service-franchises/" target="_blank">Tech: The Secret Weapon for Home Service Franchises</a></div>
+              <div class="coverage-quote">Roland-bylined thought leadership. Use with franchise, PE-backed, or multi-location prospects to establish Roland and HCP as the authoritative voice in franchise FSM.</div>
+            </td>
+            <td><span class="cov-tag fran">Franchise</span></td>
+            <td class="cov-date">Jun 2, 2025</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">ACHR News</div>
+              <div class="outlet-reach">HVAC trade</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://www.achrnews.com/articles/164737-how-ai-and-iot-help-fill-the-hvac-technician-gap" target="_blank">How AI and IoT Help Fill the HVAC Technician Gap</a></div>
+              <div class="coverage-quote">ACHR editorial on AI and IoT addressing the HVAC technician shortage — HCP cited in the piece. Third-party trade press validating HCP's role in solving the labor problem. Use with HVAC prospects struggling to hire and scale.</div>
+            </td>
+            <td><span class="cov-tag ai">AI / HVAC</span></td>
+            <td class="cov-date">2025</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="outlet-name">Contractor Magazine</div>
+              <div class="outlet-reach">Plumbing/mechanical trade</div>
+            </td>
+            <td>
+              <div class="coverage-title"><a href="https://www.contractormag.com/technology/article/55294441/more-than-70-of-home-service-pros-use-ai-to-cut-admin-work-but-not-field-jobs" target="_blank">More than 70% of Home Service Pros Use AI to Cut Admin Work — But Not Field Jobs</a></div>
+              <div class="coverage-quote">Original editorial on HCP's 2025 AI Adoption report — the highest-reach independent coverage of the report. Pairs with the AI report and any AI feature conversation.</div>
+            </td>
+            <td><span class="cov-tag ai">AI Report</span></td>
+            <td class="cov-date">Jun 3, 2025</td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PODCAST APPEARANCES — newest first -->
+    <div>
+      <div class="media-group-label">Podcast Appearances — Roland Ligtenberg, Co-Founder &amp; SVP</div>
+      <div class="podcast-grid">
+
+        <div class="pod-card">
+          <div class="pod-show">ACHR NEWSMakers Podcast · 2026</div>
+          <div class="pod-title">New Data Shows Repair Becoming a Bigger Driver for HVAC Contractors</div>
+          <div class="pod-meta">Roland on HCP platform data (2021–2025): repair is gaining share as replacement costs rise. Pair with HVAC Repair Economics report in HVAC prospect conversations.</div>
+          <a class="pod-link" href="https://www.achrnews.com/articles/166107-the-newsmakers-podcast-new-data-shows-repair-becoming-a-bigger-driver-for-hvac-contractors" target="_blank">Listen →</a>
+        </div>
+
+        <div class="pod-card">
+          <div class="pod-show">PM Magazine — And So It Flows · 2026 &nbsp;<span class="ai-flag ai-flag-light">AI</span></div>
+          <div class="pod-title">How AI and Gen Z Are Transforming the Trades</div>
+          <div class="pod-meta">Roland on AI, workforce shifts, and why now is the right moment for trades adoption. Pairs with AI report.</div>
+          <a class="pod-link" href="https://www.pmmag.com/articles/107389-and-so-it-flows-how-ai-and-gen-z-are-transforming-the-trades-the-trades-technology-and-a-new-generation" target="_blank">Listen →</a>
+        </div>
+
+        <div class="pod-card">
+          <div class="pod-show">Five Door Media Podcast · Nov 24, 2025 · 50 min</div>
+          <div class="pod-title">When Tech Meets Home Services — Everything Changes</div>
+          <div class="pod-meta">Deep dive on how technology is reshaping the cleaning and home services industry, and why the adoption window matters now. Good for non-traditional service segment prospects.</div>
+          <a class="pod-link" href="https://www.fivedoormedia.com/podcast/v/roland-lightenberg" target="_blank">Listen →</a>
+        </div>
+
+        <div class="pod-card">
+          <div class="pod-show">Best of the Best Franchising · May 8, 2025 · 31 min</div>
+          <div class="pod-title">Interview with Roland Ligtenberg, Co-Founder &amp; SVP of Growth</div>
+          <div class="pod-meta">Franchise audience. Use alongside the IFA white paper with multi-location and franchise prospects.</div>
+          <a class="pod-link" href="https://traffic.libsyn.com/4fc5c26b-c470-417c-8be4-200b785ab73c/Interview_with_Roland_Ligtenberg_Co-Founder_and_SVP_Growth__Innovation_at_Housecall_Pro.mp3" target="_blank">Listen (Direct MP3) →</a>
+        </div>
+
+        <div class="pod-card">
+          <div class="pod-show">Titans of the Trades · May 7, 2025 · 30 min &nbsp;<span class="ai-flag ai-flag-light">AI</span></div>
+          <div class="pod-title">AI and the Future of Home Services</div>
+          <div class="pod-meta">Good pairing with the AI report and any efficiency or automation pitch.</div>
+          <a class="pod-link" href="https://ryanenglin.com/podcast/ai-and-the-future-of-home-services" target="_blank">Listen →</a>
+        </div>
+
+        <div class="pod-card">
+          <div class="pod-show">Franchise Marketing Radio / Business RadioX</div>
+          <div class="pod-title">Roland Ligtenberg with Housecall Pro</div>
+          <div class="pod-meta">37 min. Franchise and multi-location positioning, growth-through-systems angle.</div>
+          <a class="pod-link" href="https://businessradiox.com/podcast/franchisemarketingradio/housecall-pro/" target="_blank">Listen →</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end media-section -->
+
+
+  <!-- QUICK USE GUIDE -->
+  <div class="quick-guide">
+    <h3>Quick Use Guide: What to Lead With</h3>
+    <div class="quick-guide-grid">
+      <div>
+        <div class="guide-col-label">HVAC Prospect</div>
+        <div class="guide-col-body">Champion (ST switcher) + Frontier ($800K→$6M, $39K from one follow-up) + HVAC Repair Economics report + State of Home Spending report</div>
+      </div>
+      <div>
+        <div class="guide-col-label">Electrical Prospect</div>
+        <div class="guide-col-body">PowerMeans (1C, left competing FSM) + JaxPowerPro (first-time owner, fast growth) + R&amp;J Brothers (best Business Coaching proof) + AI Industry Report</div>
+      </div>
+      <div>
+        <div class="guide-col-label">Competitive Displacement</div>
+        <div class="guide-col-body">Champion Heating &amp; Air (from ServiceTitan, verbatim quote available) + PowerMeans ("abandoned competing FSM 6 months in") + Growth Playbook</div>
+      </div>
+      <div>
+        <div class="guide-col-label">Franchise / Multi-Location</div>
+        <div class="guide-col-body">IFA White Paper (ResiBrands, 700 territories, chose HCP over 40+ platforms) + Growth Playbook + Franchising Magazine USA Roland byline</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    For links, questions, or to request a custom asset — contact Marketing. &nbsp;·&nbsp; Internal use only.
+  </div>
+
+</div>
+</body>
+</html>
